@@ -5,8 +5,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
+      messages: props.messages,
     };
+  }
+
+  componentDidMount() {
+    console.log(this.state.messages);
   }
 
   render() {

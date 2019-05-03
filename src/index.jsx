@@ -1,6 +1,7 @@
 import 'raf/polyfill';
 import React from 'react';
-import { render } from 'react-dom';
 import App from './components/app';
+import { render } from 'react-dom';
+import { messages } from './data/messages.json';
 
-render(<App />, document.getElementById('root'));
+render(<App messages={messages} />, document.getElementById('root'));
