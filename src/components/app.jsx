@@ -1,26 +1,7 @@
 import React from 'react';
+import Inbox from './inbox';
 
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
-const styles = {
-  card: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-};
+import '../styles/app.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,26 +15,28 @@ class App extends React.Component {
   componentDidMount() {
   }
 
+  handleMessageClick = (message) => {
+    window.alert(message.subject);
+  };
+
   render() {
     return (
-      this.state.messages.map(message => {
-        return (
-          <Card
-            key={message._id}
-          >
-            <CardContent>
-              <Typography>
-                {message.subject}
-              </Typography>
-              <Typography>
-                {message.author}
-              </Typography>
-            </CardContent>
-          </Card>
-        );
-      })
+      <React.Fragment>
+        <header>
+          <h1>Cmail</h1>
+        </header>
+        <main>
+          <Inbox
+            messages={this.state.messages}
+            handleClick={this.handleMessageClick}
+          />
+          <div>
+            message area
+          </div>
+        </main>
+      </React.Fragment>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default App;
