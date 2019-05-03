@@ -1,7 +1,7 @@
 {
-  "name": "react-bootstrap",
+  "name": "cmail-js",
   "version": "1.0.0",
-  "description": "react bootstrap application",
+  "description": "email simulator for functional skills englinsh",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -10,16 +10,16 @@
   "keywords": [
     "react"
   ],
-  "author": "Manchester Codes",
+  "author": "Ian King",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MCRcodes/react-bootstrap.git"
+    "url": "git+https://github.com/ian-antking/cmail-js"
   },
   "bugs": {
-    "url": "https://github.com/MCRcodes/react-bootstrap/issues"
+    "url": "https://github.com/ian-antking/cmail-js/issues"
   },
-  "homepage": "https://github.com/MCRcodes/react-bootstrap#readme",
+  "homepage": "https://github.com/ian-antking/cmail-js#readme",
   "dependencies": {
     "prop-types": "^15.6.1",
     "raf": "^3.4.0",
