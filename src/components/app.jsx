@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './nav-bar';
 import { Switch, Route } from 'react-router-dom';
 import InboxPage from '../pages/inbox-page';
+import NewMail from '../pages/new-mail';
 
 
 import '../styles/app.scss';
@@ -40,6 +41,7 @@ class App extends React.Component {
         <NavBar />
         <Switch>
           <Route
+            exact
             path="/"
             render={() => (
               <InboxPage
@@ -48,6 +50,11 @@ class App extends React.Component {
                 handleMessageClick={this.handleMessageClick}
               />
             )}
+          />
+          <Route
+            exact
+            path="/new"
+            render={() => <NewMail />}
           />
         </Switch>
       </React.Fragment>

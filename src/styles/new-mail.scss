@@ -1,0 +1,21 @@
+.new-message-box{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    padding-left: 10vw;
+    flex-direction: column;
+    align-content: center;
+    justify-items: center;
+    overflow: scroll;
+}
+
+.address-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-box{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
