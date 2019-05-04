@@ -1,5 +1,7 @@
 import React from 'react';
 import Inbox from './inbox';
+import Message from './message';
+
 
 import '../styles/app.scss';
 
@@ -9,17 +11,30 @@ class App extends React.Component {
 
     this.state = {
       messages: props.messages,
+      selectedMessage: null,
     };
   }
 
   componentDidMount() {
   }
 
-  handleMessageClick = (message) => {
-    window.alert(message.subject);
+  _selectMessage(message = null) {
+    this.setState({
+      selectedMessage: message,
+    });
+  }
+
+  handleMessageClick = (messageId) => {
+    const selectedMessage  = this.state.messages.find(message => message._id === messageId);
+    if (this.state.selectedMessage === selectedMessage) {
+      this._selectMessage();
+    } else {
+      this._selectMessage(selectedMessage);
+    }
   };
 
   render() {
+    console.log(this.state.selectedMessage);
     return (
       <React.Fragment>
         <header>
@@ -30,9 +45,7 @@ class App extends React.Component {
             messages={this.state.messages}
             handleClick={this.handleMessageClick}
           />
-          <div>
-            message area
-          </div>
+          <Message message={this.state.selectedMessage} />
         </main>
       </React.Fragment>
     );

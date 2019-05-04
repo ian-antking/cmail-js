@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
+import '../styles/inbox.scss';
+
 const styles = {
   card: {
     minWidth: 275,
@@ -23,13 +25,13 @@ const styles = {
 
 function Inbox(props) {
   return (
-    <div>
+    <div className="inbox">
       {
       props.messages.map(message => {
         return (
           <Card
             key={message._id}
-            onClick={() => props.handleClick(message)}
+            onClick={() => props.handleClick(message._id)}
           >
             <CardContent>
               <Typography>
