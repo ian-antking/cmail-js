@@ -2,11 +2,16 @@ html{
     overflow: hidden;
 }
 
+body{
+    margin: 0;
+    background-color: #f7f3f3;
+}
+
 main{
     display: flex;
 }
 
 svg{
-    width: 50vw;
-    height: 59vw;
+    width: 40vw;
+    height: auto;
 }

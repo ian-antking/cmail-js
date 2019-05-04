@@ -1,6 +1,7 @@
 import React from 'react';
 import Inbox from './inbox';
 import Message from './message';
+import NavBar from './nav-bar';
 
 
 import '../styles/app.scss';
@@ -25,7 +26,7 @@ class App extends React.Component {
   }
 
   handleMessageClick = (messageId) => {
-    const selectedMessage  = this.state.messages.find(message => message._id === messageId);
+    const selectedMessage = this.state.messages.find(message => message._id === messageId);
     if (this.state.selectedMessage === selectedMessage) {
       this._selectMessage();
     } else {
@@ -34,12 +35,9 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.selectedMessage);
     return (
       <React.Fragment>
-        <header>
-          <h1>Cmail</h1>
-        </header>
+        <NavBar />
         <main>
           <Inbox
             messages={this.state.messages}
