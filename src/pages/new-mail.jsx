@@ -11,6 +11,7 @@ class NewMail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      textFile: null,
       name: props.name,
       email: {
         recipient: '',
@@ -27,6 +28,10 @@ class NewMail extends React.Component {
         [event.target.name]: event.target.value,
       },
     });
+  };
+
+  handleSend = () => {
+    
   };
 
   render() {
@@ -62,14 +67,18 @@ class NewMail extends React.Component {
                 name="content"
                 multiline
                 fullWidth
-                rowMax={15}
+                rowsMax={15}
                 rows={15}
                 value={this.state.email.content}
                 variant="outlined"
                 onChange={(event) => this.handleFormChange(event)}
                 margin="normal"
               />
-              <Button>Send</Button>
+              <Button
+                onClick={() => this.handleSend()}
+              >
+                Send
+              </Button>
             </div>
           </CardContent>
         </Card>
