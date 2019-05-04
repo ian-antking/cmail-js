@@ -1,7 +1,7 @@
 import React from 'react';
-import Inbox from './inbox';
-import Message from './message';
 import NavBar from './nav-bar';
+import { Switch, Route } from 'react-router-dom';
+import InboxPage from '../pages/inbox-page';
 
 
 import '../styles/app.scss';
@@ -38,13 +38,18 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <NavBar />
-        <main>
-          <Inbox
-            messages={this.state.messages}
-            handleClick={this.handleMessageClick}
+        <Switch>
+          <Route
+            path="/"
+            render={() => (
+              <InboxPage
+                messages={this.state.messages}
+                selectedMessage={this.state.selectedMessage}
+                handleMessageClick={this.handleMessageClick}
+              />
+            )}
           />
-          <Message message={this.state.selectedMessage} />
-        </main>
+        </Switch>
       </React.Fragment>
     );
   }
