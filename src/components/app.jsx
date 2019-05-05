@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import InboxPage from '../pages/inbox-page';
 import NewMail from '../pages/new-mail';
 
-
 import '../styles/app.scss';
 
 class App extends React.Component {
@@ -35,10 +34,6 @@ class App extends React.Component {
     }
   };
 
-  handleReplyClick = (messageId) => {
-    window.alert(messageId);
-  };
-
   render() {
     return (
       <React.Fragment>
@@ -57,16 +52,31 @@ class App extends React.Component {
             )}
           />
           <Route
+            exact
             path={'/new'}
-            render={() => <NewMail />}
+            render={(props) => {
+              return (
+                <NewMail
+                  {...props}
+                  message={null}
+                />
+              );
+            }}
           />
           <Route
-            path={'/reply'}
-            render={() => <NewMail />}
+            path={'/reply/:id'}
+            render={(props) => {
+              return (
+                <NewMail
+                  {...props}
+                  messages={this.state.messages}
+                />
+              );
+            }}
           />
-          {/* <Route
+          <Route
             render={() => <Redirect to="/" />}
-          /> */}
+          />
         </Switch>
       </React.Fragment>
     );

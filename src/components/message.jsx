@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 import '../styles/message.scss';
 
@@ -32,9 +33,11 @@ function Inbox(props) {
                 {props.message.content}
               </Typography>
               <div className="message-controls">
-                <Button onClick={() => props.handleReplyClick()}>
-                  Reply
-                </Button>
+                <Link to={`/reply/${props.message._id}`}>
+                  <Button>
+                    Reply
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>

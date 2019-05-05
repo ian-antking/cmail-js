@@ -1,23 +1,28 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@material-ui/core/Typography';
 
 import '../styles/new-mail.scss';
+
+const DIVIDER = `\n\n${'-'.repeat(50)}\n\n`;
 
 class NewMail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: props.name,
-      email: props.email ? {
-        recipient: props.recipient,
-        subject: props.subject,
-        content: props.content,
-      } : {
-        recipient: '',
+    const messageId = this.props.match.params.id;
+    const message = this.props.messages[messageId - 1];
+    this.state = message ? {
+      email: {
+        author: message.author,
+        email: message.email,
+        subject: `Re: ${message.subject}`,
+        content: `${DIVIDER}${message.content}`,
+      },
+    } : {
+      email: {
+        author: 'New Email',
+        email: '',
         subject: '',
         content: '',
       },
@@ -40,51 +45,49 @@ class NewMail extends React.Component {
   render() {
     return (
       <div className="new-message-box">
-        <Card>
-          <CardHeader
-            title={this.state.name ? this.state.name : 'New Email'}
+        <Typography variant="h3">{this.state.email.author}</Typography>
+        <div classauthor="address-bar">
+          <TextField
+            id="email"
+            name="email"
+            type="email"
+            label="Email Address"
+            fullWidth
+            value={this.state.email.email}
+            onChange={(event) => this.handleFormChange(event)}
+            margin="normal"
           />
-          <CardContent>
-            <div className="address-bar">
-              <TextField
-                id="recipient"
-                name="recipient"
-                type="email"
-                label="Email Address"
-                value={this.state.email.recipient}
-                onChange={(event) => this.handleFormChange(event)}
-                margin="normal"
-              />
-              <TextField
-                id="subject"
-                name="subject"
-                label="Subject"
-                value={this.state.email.subject}
-                onChange={(event) => this.handleFormChange(event)}
-                margin="normal"
-              />
-            </div>
-            <div className="content-box">
-              <TextField
-                id="content"
-                name="content"
-                multiline
-                fullWidth
-                rowsMax={15}
-                rows={15}
-                value={this.state.email.content}
-                variant="outlined"
-                onChange={(event) => this.handleFormChange(event)}
-                margin="normal"
-              />
-              <Button
-                onClick={() => this.handleSend()}
-              >
+          <TextField
+            id="subject"
+            name="subject"
+            label="Subject"
+            fullWidth
+            value={this.state.email.subject}
+            onChange={(event) => this.handleFormChange(event)}
+            margin="normal"
+          />
+        </div>
+        <div classauthor="content-box">
+          <TextField
+            id="content"
+            name="content"
+            multiline
+            fullWidth
+            autoFocus
+            rowsMax={15}
+            rows={15}
+            value={this.state.email.content}
+            variant="outlined"
+            onChange={(event) => this.handleFormChange(event)}
+            margin="normal"
+          />
+          <Button
+            fullWidth
+            onClick={() => window.print()}
+          >
                 Send
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          </Button>
+        </div>
       </div>
     );
   }
