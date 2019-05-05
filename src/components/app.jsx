@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './nav-bar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import InboxPage from '../pages/inbox-page';
 import NewMail from '../pages/new-mail';
 
@@ -35,6 +35,10 @@ class App extends React.Component {
     }
   };
 
+  handleReplyClick = (messageId) => {
+    window.alert(messageId);
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -48,14 +52,21 @@ class App extends React.Component {
                 messages={this.state.messages}
                 selectedMessage={this.state.selectedMessage}
                 handleMessageClick={this.handleMessageClick}
+                handleReplyClick={this.handleReplyClick}
               />
             )}
           />
           <Route
-            exact
-            path="/new"
+            path={'/new'}
             render={() => <NewMail />}
           />
+          <Route
+            path={'/reply'}
+            render={() => <NewMail />}
+          />
+          {/* <Route
+            render={() => <Redirect to="/" />}
+          /> */}
         </Switch>
       </React.Fragment>
     );

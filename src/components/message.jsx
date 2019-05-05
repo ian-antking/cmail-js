@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import '../styles/message.scss';
 
@@ -30,6 +31,11 @@ function Inbox(props) {
               >
                 {props.message.content}
               </Typography>
+              <div className="message-controls">
+                <Button onClick={() => props.handleReplyClick()}>
+                  Reply
+                </Button>
+              </div>
             </CardContent>
           </Card>
         ) : <Envelope />

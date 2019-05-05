@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import '../styles/nav-bar.scss';
 
@@ -30,7 +30,7 @@ function NavBar(props) {
     >
       <Toolbar>
         <Typography variant="h3" color="inherit" className={classes.grow}>Cmail</Typography>
-        <Link to="/">
+        <NavLink to="/">
           <IconButton
             className={classes.menuButton}
             color="inherit"
@@ -38,8 +38,8 @@ function NavBar(props) {
           >
             <Icon>all_inbox</Icon>
           </IconButton>
-        </Link>
-        <Link to="/new">
+        </NavLink>
+        <NavLink to="/new">
           <IconButton
             className={classes.menuButton}
             color="inherit"
@@ -47,7 +47,7 @@ function NavBar(props) {
           >
             +<Icon>email</Icon>
           </IconButton>
-        </Link>
+        </NavLink>
       </Toolbar>
     </AppBar>
   );

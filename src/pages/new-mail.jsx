@@ -11,15 +11,18 @@ class NewMail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textFile: null,
       name: props.name,
-      email: {
+      email: props.email ? {
+        recipient: props.recipient,
+        subject: props.subject,
+        content: props.content,
+      } : {
         recipient: '',
         subject: '',
         content: '',
       },
     };
-  };
+  }
 
   handleFormChange = (event) => {
     this.setState({
@@ -31,7 +34,7 @@ class NewMail extends React.Component {
   };
 
   handleSend = () => {
-    
+
   };
 
   render() {
