@@ -11,7 +11,8 @@ class NewMail extends React.Component {
   constructor(props) {
     super(props);
     const messageId = this.props.match.params.id;
-    const message = this.props.messages[messageId - 1];
+    let message;
+    if (messageId) message = this.props.messages[messageId - 1];
     this.state = message ? {
       email: {
         author: message.author,
@@ -38,8 +39,8 @@ class NewMail extends React.Component {
     });
   };
 
-  handleSend = () => {
-
+  handleSendClick = () => {
+    this.props.handleSend(this.state.email);
   };
 
   render() {
@@ -83,7 +84,7 @@ class NewMail extends React.Component {
           />
           <Button
             fullWidth
-            onClick={() => window.print()}
+            onClick={() => this.handleSendClick()}
           >
                 Send
           </Button>

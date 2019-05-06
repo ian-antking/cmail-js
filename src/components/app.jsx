@@ -3,6 +3,7 @@ import NavBar from './nav-bar';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import InboxPage from '../pages/inbox-page';
 import NewMail from '../pages/new-mail';
+import OutputPage from '../pages/output-page';
 
 import '../styles/app.scss';
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     this.state = {
       messages: props.messages,
       selectedMessage: null,
+      output: null,
     };
   }
 
@@ -32,6 +34,12 @@ class App extends React.Component {
     } else {
       this._selectMessage(selectedMessage);
     }
+  };
+
+  handleSendClick = (message) => {
+    this.setState({
+      output: message,
+    });
   };
 
   render() {
@@ -59,6 +67,7 @@ class App extends React.Component {
                 <NewMail
                   {...props}
                   message={null}
+                  handleSend={this.handleSendClick}
                 />
               );
             }}
@@ -70,6 +79,18 @@ class App extends React.Component {
                 <NewMail
                   {...props}
                   messages={this.state.messages}
+                  handleSend={this.handleSendClick}
+                />
+              );
+            }}
+          />
+          <Route
+            path={'/send'}
+            render={(props) => {
+              return (
+                <OutputPage
+                  {...props}
+                  output={this.state.output}
                 />
               );
             }}

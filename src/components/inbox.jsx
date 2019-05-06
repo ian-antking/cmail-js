@@ -15,7 +15,7 @@ function Inbox(props) {
         {
       props.messages.map(message => {
         return (
-          <React.Fragment key={message._id}>
+          <div key={message._id}>
             <MenuItem
               onClick={() => props.handleClick(message._id)}
             >
@@ -25,7 +25,7 @@ function Inbox(props) {
               />
             </MenuItem>
             <Divider />
-          </React.Fragment>
+          </div>
         );
       })
   }
