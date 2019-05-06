@@ -30,6 +30,10 @@ class NewMail extends React.Component {
     };
   }
 
+  componentDidMount() {
+
+  }
+
   handleFormChange = (event) => {
     this.setState({
       email: {
@@ -41,6 +45,7 @@ class NewMail extends React.Component {
 
   handleSendClick = () => {
     this.props.handleSend(this.state.email);
+    this.props.history.push('/send');
   };
 
   render() {

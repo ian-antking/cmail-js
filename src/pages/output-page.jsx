@@ -2,11 +2,20 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import '../styles/output-page.scss';
+
 function OutputPage(props) {
   return props.output ? (
     <div className="new-message-box">
-      <Typography>{props.output.subject}</Typography>
-      <Button>Print</Button>
+      <Typography variant="h6">{`To: ${props.output.email}`}</Typography>
+      <Typography variant="h6">{`Subject: ${props.output.subject}`}</Typography>
+      <Typography variant="h6">Message:</Typography>
+      <pre>{props.output.content}</pre>
+      <Button
+        onClick={() => window.print()}
+      >
+        Print
+      </Button>
     </div>
   ) : (
     <div className="new-message-box">
