@@ -10,6 +10,7 @@ function InboxPage(props) {
         handleClick={props.handleMessageClick}
       />
       <Message
+        {...props}
         message={props.selectedMessage}
         handleReplyClick={props.handleReplyClick}
       />
