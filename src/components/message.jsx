@@ -39,7 +39,11 @@ function Inbox(props) {
               </div>
             </CardContent>
           </Card>
-        ) : <Envelope />
+        ) : (
+          <div className="message-box">
+            <Envelope />
+          </div>
+        )
       }
     </div>
   );

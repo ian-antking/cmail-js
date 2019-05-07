@@ -1,11 +1,11 @@
 .message-box{
     display: flex;
-    width: 80%;
-    height: 80%;
-    padding: 10vw;
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
     flex-direction: column;
     align-content: center;
-    justify-items: center;
+    justify-items: flex-start;
 }
 
 .message-controls{
