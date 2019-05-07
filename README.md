@@ -1,6 +1,6 @@
-# React Bootstrap
+# CMail JS
 
-React boilerplate project for Manchester Codes' projects.
+Email inbox simulator for teaching English writing skills.
 
 ## Getting Started
 
@@ -23,3 +23,5 @@ npm start
 ```
 
 ### Visit `localhost:8080` in your browser.
+
+"Emails" are displayed to the lest of the screen in the inbox. Click on them to read them.
