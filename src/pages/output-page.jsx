@@ -5,17 +5,22 @@ import Button from '@material-ui/core/Button';
 import '../styles/output-page.scss';
 
 function OutputPage(props) {
+  const handlePrintClick = () => {
+    window.print();
+  };
+
   return props.output ? (
-    <div className="new-message-box">
+    <div className="output-box">
+      <Button
+        fullWidth
+        onClick={() => handlePrintClick()}
+      >
+        Click Here to Print
+      </Button>
       <Typography variant="h6">{`To: ${props.output.email}`}</Typography>
       <Typography variant="h6">{`Subject: ${props.output.subject}`}</Typography>
       <Typography variant="h6">Message:</Typography>
       <pre>{props.output.content}</pre>
-      <Button
-        onClick={() => window.print()}
-      >
-        Print
-      </Button>
     </div>
   ) : (
     <div className="new-message-box">
