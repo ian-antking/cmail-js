@@ -5,6 +5,7 @@ svg{
     display: flex;
     width: 100%;
     height: 100%;
+    max-height: 80vh;
     padding: 1vw;
     flex-direction: column;
     align-content: center;
@@ -23,4 +24,10 @@ svg{
 .message-controls{
     display: flex;
     justify-content: flex-end;
+}
+
+.message-text{
+    overflow: scroll;
+    height: 50vh;
+    overflow-x: hidden;
 }

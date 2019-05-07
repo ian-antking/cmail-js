@@ -26,10 +26,11 @@ function Inbox(props) {
               >
                 {props.message.subject}
               </Typography>
-
-              <pre>
-                {props.message.content}
-              </pre>
+              <div className="message-text">
+                <pre>
+                  {props.message.content}
+                </pre>
+              </div>
               <div className="message-controls">
                 <Link to={`/reply/${props.message._id}`}>
                   <Button>
