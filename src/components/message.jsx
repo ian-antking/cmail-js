@@ -40,7 +40,7 @@ function Inbox(props) {
             </CardContent>
           </Card>
         ) : (
-          <div className="message-box">
+          <div className="svg-box">
             <Envelope />
           </div>
         )
