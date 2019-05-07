@@ -10,7 +10,6 @@ import '../styles/app.scss';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       messages: props.messages,
       selectedMessage: null,
@@ -50,8 +49,9 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => (
+            render={(props) => (
               <InboxPage
+                {...props}
                 messages={this.state.messages}
                 selectedMessage={this.state.selectedMessage}
                 handleMessageClick={this.handleMessageClick}
