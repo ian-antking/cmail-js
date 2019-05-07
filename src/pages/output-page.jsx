@@ -5,11 +5,15 @@ import Button from '@material-ui/core/Button';
 import '../styles/output-page.scss';
 
 function OutputPage(props) {
+  const handlePrintClick = () => {
+    window.print();
+  };
+
   return props.output ? (
     <div className="output-box">
       <Button
         fullWidth
-        onClick={() => window.print()}
+        onClick={() => handlePrintClick()}
       >
         Click Here to Print
       </Button>

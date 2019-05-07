@@ -30,10 +30,6 @@ class NewMail extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
   handleFormChange = (event) => {
     this.setState({
       email: {
@@ -88,7 +84,6 @@ class NewMail extends React.Component {
             margin="normal"
           />
           <Button
-            fullWidth
             onClick={() => this.handleSendClick()}
           >
                 Send

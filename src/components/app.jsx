@@ -17,9 +17,6 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-  }
-
   _selectMessage(message = null) {
     this.setState({
       selectedMessage: message,
