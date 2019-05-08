@@ -14,6 +14,7 @@ class NewMail extends React.Component {
     let message;
     if (messageId) message = this.props.messages[messageId - 1];
     this.state = message ? {
+      finished: false,
       email: {
         author: message.author,
         email: message.email,
@@ -21,6 +22,7 @@ class NewMail extends React.Component {
         content: `${DIVIDER}${message.content}`,
       },
     } : {
+      finished: false,
       email: {
         author: 'New Email',
         email: '',
@@ -28,6 +30,14 @@ class NewMail extends React.Component {
         content: '',
       },
     };
+  }
+
+  componentWillUnmount() {
+    if (!this.state.finished) {
+      if (window.confirm('Would you like to save this work to complete later?')) {
+        localStorage.setItem('draft', JSON.stringify(this.state.email));
+      }
+    }
   }
 
   handleFormChange = (event) => {
@@ -40,8 +50,12 @@ class NewMail extends React.Component {
   };
 
   handleSendClick = () => {
-    this.props.handleSend(this.state.email);
-    this.props.history.push('/send');
+    this.setState({
+      finished: true,
+    }, () => {
+      this.props.handleSend(this.state.email);
+      this.props.history.push('/send');
+    });
   };
 
   render() {

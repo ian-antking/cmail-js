@@ -6,6 +6,7 @@ import '../styles/output-page.scss';
 
 function OutputPage(props) {
   const handlePrintClick = () => {
+    localStorage.removeItem('draft');
     window.print();
   };
 
