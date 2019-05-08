@@ -32,6 +32,19 @@ class NewMail extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const draft = localStorage.getItem('draft');
+    if (draft) {
+      if (window.confirm('Would you like to continue your previous email?')) {
+        this.setState({
+          email: JSON.parse(draft),
+        }, localStorage.removeItem('draft'));
+      } else {
+        localStorage.removeItem('draft');
+      }
+    }
+  }
+
   componentWillUnmount() {
     if (!this.state.finished) {
       if (window.confirm('Would you like to save this work to complete later?')) {
